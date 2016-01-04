@@ -45,6 +45,29 @@
 			<version>${spring-framework.version}</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		
+        <!-- c3p0 -->
+		<dependency> 
+		    <groupId>c3p0</groupId> 
+		    <artifactId>c3p0</artifactId> 
+		    <version>0.9.0.2</version>   
+		</dependency> 
+		<dependency> 
+		    <groupId>org.hibernate</groupId> 
+		    <artifactId>hibernate-c3p0</artifactId> 
+		    <version>${hibernate.version}</version> 
+		</dependency> 
+		<dependency> 
+		  <groupId>c3p0</groupId> 
+		  <artifactId>c3p0-oracle-thin-extras</artifactId> 
+		<version>0.9.0.2</version> 
+		</dependency>   
+		
 		<!-- Logging with SLF4J & LogBack -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -93,5 +116,19 @@
 			<version>11.2.0</version>
 		</dependency>
 		
+		  <!-- AspectJ -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.7.4</version>
+        </dependency>
+ 
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.7.4</version>
+        </dependency>
+        
+        
 	</dependencies>	
 </project>
