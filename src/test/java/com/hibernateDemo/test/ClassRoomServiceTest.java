@@ -1,11 +1,16 @@
 package com.hibernateDemo.test;
 
+import static org.junit.Assert.*;
+
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.hibernate.SessionFactory;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -23,10 +28,11 @@ import junit.framework.TestCase;
 * @desc: 
 * 
 */
-public class CrudTest extends TestCase{
+public class ClassRoomServiceTest extends TestCase{
+	public ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+	private static final Logger log = LoggerFactory.getLogger(ClassRoomServiceTest.class);
 	@Test
-	public void testName() throws Exception {
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+	public void testInsertOneToMany() throws Exception {
 		
 		Student student = new Student();
 		student.setName("wuzhiping" + new Date());
@@ -37,21 +43,26 @@ public class CrudTest extends TestCase{
 		
 		Set<Student> set = new HashSet<Student>();
 		set.add(student);
-		classRoom.setStudents(set);
+		
+		classRoom.setStd(set);
 		
 		//classRoom.setStudents();
 		
 		try {
 			//getStudentService(ctx).save(student);
 			
-			ctx.getBean(ClassRoomService.class).save(classRoom);
+			getClassRoomService().save(classRoom);
+			ClassRoom rs = getClassRoomService().getClassRoomByExample(50);
+			rs.getStd().size();
+			log.info(rs.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 	}
 
-	private StudentService getStudentService(ApplicationContext ctx) {
-		return ctx.getBean(StudentService.class);
+
+	private ClassRoomService getClassRoomService() {
+		return ctx.getBean(ClassRoomService.class);
 	}
 }

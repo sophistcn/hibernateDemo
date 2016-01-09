@@ -1,5 +1,6 @@
 package com.hibernateDemo.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,6 +22,8 @@ public class Student {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	private String name;
+	@ManyToOne(cascade={CascadeType.ALL})
+	@JoinColumn(name="cid")
 	private ClassRoom classRoom;
 	
 	public String getName() {
@@ -35,8 +38,6 @@ public class Student {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="rid")
 	public ClassRoom getClassRoom() {
 		return classRoom;
 	}

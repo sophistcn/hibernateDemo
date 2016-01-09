@@ -1,5 +1,7 @@
 package com.hibernateDemo.service;
 
+import java.util.List;
+
 import com.hibernateDemo.domain.ClassRoom;
 
 /**
@@ -11,4 +13,8 @@ import com.hibernateDemo.domain.ClassRoom;
 */
 public interface ClassRoomService {
 	void save(ClassRoom classRoom);
+
+	List<ClassRoom> getClassRoomListByExample(ClassRoom classRoom);
+
+	ClassRoom getClassRoomByExample(Integer id);
 }

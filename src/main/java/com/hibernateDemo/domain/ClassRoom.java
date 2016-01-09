@@ -2,14 +2,18 @@ package com.hibernateDemo.domain;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.context.annotation.Lazy;
 
 /**
 * @author: 吴志平
@@ -22,9 +26,12 @@ import org.hibernate.annotations.LazyCollectionOption;
 public class ClassRoom {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column
 	private Integer id;
+	@Column
 	private String className;
-	private Set<Student> students;
+	@OneToMany(mappedBy="classRoom",cascade=CascadeType.ALL)
+	private Set<Student> std;
 	public Integer getId() {
 		return id;
 	}
@@ -37,13 +44,17 @@ public class ClassRoom {
 	public void setClassName(String className) {
 		this.className = className;
 	}
-	@OneToMany(mappedBy="classRoom")
-	@LazyCollection(LazyCollectionOption.EXTRA)
-	public Set<Student> getStudents() {
-		return students;
+	@Lazy(value=false)
+	public Set<Student> getStd() {
+		return std;
 	}
-	public void setStudents(Set<Student> students) {
-		this.students = students;
+	public void setStd(Set<Student> std) {
+		this.std = std;
 	}
+	@Override
+	public String toString() {
+		return "ClassRoom [id=" + id + ", className=" + className + ", std=" + std + "]";
+	}
+	
 	
 }

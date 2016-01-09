@@ -1,5 +1,8 @@
 package com.hibernateDemo.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.hibernateDemo.domain.ClassRoom;
@@ -16,6 +19,14 @@ public class ClassRoomServiceImpl extends BaseService implements ClassRoomServic
 	
 	public void save(ClassRoom classRoom) {
 		sessionFactory.getCurrentSession().save(classRoom);
+	}
+
+	public List<ClassRoom> getClassRoomListByExample(ClassRoom classRoom) {
+		return new ArrayList<ClassRoom>();
+	}
+
+	public ClassRoom getClassRoomByExample(Integer id) {
+		return  (ClassRoom) sessionFactory.getCurrentSession().load(ClassRoom.class, id);
 	}
 
 }
