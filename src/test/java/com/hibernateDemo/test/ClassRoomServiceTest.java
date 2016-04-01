@@ -28,7 +28,7 @@ import junit.framework.TestCase;
 * @desc: 
 * 
 */
-public class ClassRoomServiceTest extends TestCase{
+public class ClassRoomServiceTest {
 	public ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 	private static final Logger log = LoggerFactory.getLogger(ClassRoomServiceTest.class);
 	@Test
@@ -60,7 +60,11 @@ public class ClassRoomServiceTest extends TestCase{
 		}
 		
 	}
-
+	
+	@Test
+	public void testGetByCriteria() throws Exception {
+		getClassRoomService().getClassRoomByCriteria("hehe");
+	}
 
 	private ClassRoomService getClassRoomService() {
 		return ctx.getBean(ClassRoomService.class);

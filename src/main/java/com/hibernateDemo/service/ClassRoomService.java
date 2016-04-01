@@ -17,4 +17,6 @@ public interface ClassRoomService {
 	List<ClassRoom> getClassRoomListByExample(ClassRoom classRoom);
 
 	ClassRoom getClassRoomByExample(Integer id);
+	
+	List<ClassRoom> getClassRoomByCriteria(String roomName);
 }

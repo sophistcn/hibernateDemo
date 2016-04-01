@@ -3,6 +3,8 @@ package com.hibernateDemo.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
 
 import com.hibernateDemo.domain.ClassRoom;
@@ -29,4 +31,10 @@ public class ClassRoomServiceImpl extends BaseService implements ClassRoomServic
 		return  (ClassRoom) sessionFactory.getCurrentSession().load(ClassRoom.class, id);
 	}
 
+	public List<ClassRoom> getClassRoomByCriteria(String roomName) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(ClassRoom.class);
+		criteria.add(Restrictions.eq("className", "hehe"));
+		return criteria.list();
+	}
+	
 }
