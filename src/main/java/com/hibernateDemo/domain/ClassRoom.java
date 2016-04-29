@@ -1,5 +1,6 @@
 package com.hibernateDemo.domain;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -23,7 +24,7 @@ import org.springframework.context.annotation.Lazy;
 * 
 */
 @Entity
-public class ClassRoom {
+public class ClassRoom implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column
@@ -55,6 +56,5 @@ public class ClassRoom {
 	public String toString() {
 		return "ClassRoom [id=" + id + ", className=" + className + ", std=" + std + "]";
 	}
-	
 	
 }

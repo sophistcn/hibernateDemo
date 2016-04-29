@@ -13,7 +13,15 @@ import com.hibernateDemo.domain.ClassRoom;
 */
 public interface ClassRoomService {
 	void save(ClassRoom classRoom);
-
+	/**
+	 * 
+	 * @param classRoom
+	 * @return
+	 * @author Sophist Wu
+	 * @mailTo: sophistwu@outlook.com
+	 * @createDate: 2016年4月24日 上午9:23:24
+	 * @desc 
+	 */
 	List<ClassRoom> getClassRoomListByExample(ClassRoom classRoom);
 
 	ClassRoom getClassRoomByExample(Integer id);

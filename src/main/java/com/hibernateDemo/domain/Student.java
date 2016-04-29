@@ -1,5 +1,7 @@
 package com.hibernateDemo.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,7 +19,7 @@ import javax.persistence.ManyToOne;
 * 
 */
 @Entity
-public class Student {
+public class Student implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;

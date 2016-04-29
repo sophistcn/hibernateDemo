@@ -24,7 +24,8 @@ public class ClassRoomServiceImpl extends BaseService implements ClassRoomServic
 	}
 
 	public List<ClassRoom> getClassRoomListByExample(ClassRoom classRoom) {
-		return new ArrayList<ClassRoom>();
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(ClassRoom.class);
+		return criteria.list();
 	}
 
 	public ClassRoom getClassRoomByExample(Integer id) {
